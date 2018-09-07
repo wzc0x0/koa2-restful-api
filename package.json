@@ -1,0 +1,19 @@
+{
+    "name": "koa2-restfulApi",
+    "version": "1.0.0",
+    "description": "How to built a restful-api by koa2",
+    "main": "index.js",
+    "author": "wzc0x0@gmail.com",
+    "license": "MIT",
+    "scripts": {
+        "dev": "node build/dev-server.js"
+    },
+    "dependencies": {
+        "koa": "^2.5.2",
+        "koa-bodyparser": "^4.2.1",
+        "koa-router": "^7.4.0"
+    },
+    "devDependencies": {
+        "chokidar": "^2.0.4"
+    }
+}

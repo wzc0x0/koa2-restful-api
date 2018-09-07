@@ -1,0 +1,14 @@
+{
+    "name": "web-test",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "wzc0x0@gmail.com",
+    "license": "MIT",
+    "scripts": {
+        "dev": "gulp"
+    },
+    "dependencies": {
+        "browser-sync": "^2.24.6",
+        "gulp": "^3.9.1"
+    }
+}
