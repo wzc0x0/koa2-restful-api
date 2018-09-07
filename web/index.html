@@ -11,6 +11,11 @@
 <body>
 
     <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $.get('http://localhost:3000/get-cookie').then(() => {
+            console.log(document.cookie)
+        })
+    </script>
 </body>
 
 </html>
