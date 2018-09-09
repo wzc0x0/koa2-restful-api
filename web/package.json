@@ -5,10 +5,9 @@
     "author": "wzc0x0@gmail.com",
     "license": "MIT",
     "scripts": {
-        "dev": "gulp"
+        "dev": "parcel serve index.html -p 8080 --open"
     },
     "dependencies": {
-        "browser-sync": "^2.24.6",
-        "gulp": "^3.9.1"
+        "axios": "^0.18.0"
     }
 }

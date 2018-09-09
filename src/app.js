@@ -17,6 +17,25 @@ app.use((ctx, next) => {
     return next()
 })
 
+
+app.use(async ctx => {
+    if (ctx.url === '/index') {
+        ctx.cookies.set(
+            'cid',
+            'hello world', {
+                domain: 'localhost', // 写cookie所在的域名
+                path: '/index', // 写cookie所在的路径
+                maxAge: 10 * 60 * 1000, // cookie有效时长
+                httpOnly: false, // 是否只用于http请求中获取
+                overwrite: false // 是否允许重写
+            }
+        )
+        ctx.body = 'cookie is ok'
+    } else {
+        ctx.body = 'hello world'
+    }
+})
+
 router
     .get('/', (ctx, next) => {
         ctx.body = '<h1>hello get</h1>'
@@ -34,20 +53,10 @@ router
     })
     .post('/user', (ctx, next) => {
         ctx.body = ctx.request.body
-        console.log(ctx.request.body)
+        console.log(ctx.cookies.get('sid'))
     })
     .put('/user', (ctx, next) => {
 
-    })
-    .get('/get-cookie', (ctx, next) => {
-        ctx.cookies.set('sid', 'hello world', {
-            domain: 'localhost',
-            path: '/',
-            maxAge: 3600,
-            expires: new Date(),
-            httpOnly: false
-        })
-        ctx.body = 'cookie is ok'
     })
 
 app
