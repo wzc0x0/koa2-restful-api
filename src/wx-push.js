@@ -89,8 +89,9 @@ const package_content = () => {
     })
 }
 
-// every day 8:00 clock
+log.info('The job start!')
+    // every day 8:00:10 clock
 const job = schedule.scheduleJob('10 0 8 * * *', function() {
-    log.info('The job start!')
+    log.info('start!')
     package_content()
 })
