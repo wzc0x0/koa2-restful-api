@@ -8,6 +8,7 @@
         "dev": "parcel serve index.html -p 8080 --open"
     },
     "dependencies": {
+        "parcel": "^1.10.3",
         "axios": "^0.18.0"
     }
 }

@@ -9,9 +9,47 @@
 </head>
 
 <body>
+    <input type="file" name="file" id="file">
 
     <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="./ajax.js"></script>
+    <script>
+        $('#file').on('change', function() {
+            let fd = new FormData()
+            fd.append('filename', this.files[0])
+            $.ajax({
+                url: 'http://localhost:3000/upload',
+                method: 'post',
+                data: fd,
+                contentType: false, // 注意这里应设为false
+                processData: false,
+                success: function(e) {
+                    console.log(e)
+                }
+            })
+        })
+
+
+
+        false && $.ajax({
+            url: 'http://localhost:3000/user/update',
+            method: 'post',
+            data: JSON.stringify({
+                a: 0.0,
+                b: 2
+            }),
+            headers: {
+                Authentication: '1'
+            },
+            dataType: 'json',
+            contentType: "application/json; charset=UTF-8",
+            success: function(res) {
+                console.log(res)
+            },
+            fail: function(res) {
+                console.log(res);
+            }
+        })
+    </script>
 </body>
 
 </html>

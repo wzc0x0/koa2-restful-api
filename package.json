@@ -2,7 +2,7 @@
     "name": "koa2-restfulApi",
     "version": "1.0.0",
     "description": "How to built a restful-api by koa2",
-    "main": "index.js",
+    "main": "src/app.js",
     "author": "wzc0x0@gmail.com",
     "license": "MIT",
     "scripts": {
@@ -11,8 +11,9 @@
     "dependencies": {
         "axios": "^0.18.0",
         "koa": "^2.5.2",
-        "koa-bodyparser": "^4.2.1",
+        "koa-body": "^4.0.4",
         "koa-router": "^7.4.0",
+        "koa2-cors": "^2.0.6",
         "log4js": "^3.0.6",
         "node-schedule": "^1.3.0"
     },

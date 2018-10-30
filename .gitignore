@@ -12,3 +12,4 @@ yarn-error.log*
 *.sln
 /web/.cache
 /web/dist
+static
