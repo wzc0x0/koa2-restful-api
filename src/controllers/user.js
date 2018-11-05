@@ -1,7 +1,6 @@
 const fs = require('fs')
 const path = require('path')
 const save_path = path.resolve(__dirname, '../../static/upload/')
-    // const utils = require('../utils/tools')
 
 class UserController {
     static async getUser(ctx) {
@@ -17,9 +16,7 @@ class UserController {
                 readStream = fs.createReadStream(file.path),
                 writeStream = fs.createWriteStream(`${save_path}/${file.hash}.${ext}`);
             readStream.pipe(writeStream)
-            ctx.success({
-                filename: `${file.hash}.${ext}`
-            })
+            ctx.success({ filename: `${file.hash}.${ext}` })
         } catch (error) {
             ctx.fail(1101, error)
         }
