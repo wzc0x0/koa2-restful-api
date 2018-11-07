@@ -17,7 +17,7 @@ class ImageViewController {
             ctx.body = data
             ctx.status = 200
             ctx.type = `image/${info.format || 'png'}`
-            ctx.attachment() //let browser download
+                // ctx.attachment() //let browser download
             await next()
         } catch (error) {
             console.log(error)
@@ -31,10 +31,16 @@ const readerTransform = image_params => new Promise((resolve, reject) => {
         if (err) return reject(err)
 
         var image = sharp(buf),
-            { format, quality, progress } = image_params.params,
+            { format, quality, progress, width, height } = image_params.params,
             isProgress = progress ? true : false,
             pngCompress = Math.round((quality / 10) - 1),
-            quality = quality - 0;
+            quality = quality - 0,
+            width = width - 0 || null,
+            height = height - 0 || null;
+
+        if (width || height) {
+            image = image.resize(width, height)
+        }
 
         if (/jpe?g/.test(format)) {
             image = image.jpeg({
@@ -55,7 +61,6 @@ const readerTransform = image_params => new Promise((resolve, reject) => {
         if (format === 'webp') {
             image = image.webp({ quality, lossless: true })
         }
-
 
         image.toBuffer((err, data, info) => {
             if (err) return reject(err)
