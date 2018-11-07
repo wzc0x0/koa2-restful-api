@@ -5,10 +5,10 @@
     "author": "wzc0x0@gmail.com",
     "license": "MIT",
     "scripts": {
-        "dev": "parcel serve index.html -p 8080 --open"
+        "dev": "parcel serve index.html --open"
     },
     "dependencies": {
-        "parcel": "^1.10.3",
-        "axios": "^0.18.0"
+        "axios": "^0.18.0",
+        "parcel-bundler": "^1.10.3"
     }
 }

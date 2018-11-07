@@ -12,11 +12,10 @@ class UserController {
     static async upload(ctx) {
         try {
             let file = ctx.request.files['filename'],
-                ext = file.name.split('.').pop(),
                 readStream = fs.createReadStream(file.path),
-                writeStream = fs.createWriteStream(`${save_path}/${file.hash}.${ext}`);
+                writeStream = fs.createWriteStream(`${save_path}/${file.hash}`);
             readStream.pipe(writeStream)
-            ctx.success({ filename: `${file.hash}.${ext}` })
+            ctx.success({ hash: file.hash })
         } catch (error) {
             ctx.fail(1101, error)
         }
