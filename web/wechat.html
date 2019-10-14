@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>微信登录</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <style>
+        .wechat-info-wrapper {
+            text-align: center;
+        }
+
+        .wechat-info-wrapper button {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wechat-info-wrapper">
+        <img class="avatar" src="" alt="" />
+        <p class="user-name"></p>
+        <button id="btn1">登录</button>
+        <!-- <button id="btn2">推送模板消息</button> -->
+        <img width="100%" src="./20170627140734430.png" alt="" />
+    </div>
+    <script>
+        btn1.onclick = function() {
+            location.href =
+                "http://1656o752y9.51mypc.cn/wechatLogin?returnUrl=http://1656o752y9.51mypc.cn:50398/wechat.html";
+        };
+        /* btn2.onclick = function() {
+              fetch("http://1656o752y9.51mypc.cn/wechatSendMsg", {
+                      method: "GET",
+                      credentials: "include"
+                  })
+                  .then(res => res.json())
+                  .then(res => {
+                      console.log(res);
+                  });
+          }; */
+        fetch("http://1656o752y9.51mypc.cn/wechatUserInfo", {
+                method: "GET",
+                credentials: "include"
+            })
+            .then(res => res.json())
+            .then(({
+                code,
+                data
+            }) => {
+                if (code === 200) {
+                    document.querySelector(".avatar").src = data.headimgurl;
+                    document.querySelector(".user-name").textContent =
+                        "昵称：" + data.nickname + "  " + "地区：" + data.country;
+                } else if (code === 401) {
+                    location.href =
+                        "http://1656o752y9.51mypc.cn/wechatLogin?returnUrl=http://1656o752y9.51mypc.cn:50398/wechat.html";
+                }
+            });
+    </script>
+    <script src="//cdn.bootcss.com/eruda/1.5.4/eruda.min.js"></script>
+    <script>
+        eruda.init();
+    </script>
+</body>
+
+</html>

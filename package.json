@@ -1,5 +1,5 @@
 {
-    "name": "koa2-restfulApi",
+    "name": "koa2-restful-api",
     "version": "1.0.0",
     "description": "How to built a restful-api by koa2",
     "main": "src/app.js",
